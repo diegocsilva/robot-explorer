@@ -1,0 +1,15 @@
+---
+robot:
+  initial:
+    COORDINATE_X: 0
+    COORDINATE_Y: 0
+    DIRECTION: NORTH
+    AXIS_RANGE_X: 5
+    AXIS_RANGE_Y: 5
+    SOUTH_LIMIT: 0
+    WEST_LIMIT: 0
+  exception:
+    message:
+      action_not_valid: Ocorreu um erro ao tentar converter comando enviado em uma ação, por favor verifique novamente!
+      position_not_valid: Comando não suportado pois ele leva a uma posição não localizada dentro do mapa.
+      defaul_error_message: Erro ao executar rota.
