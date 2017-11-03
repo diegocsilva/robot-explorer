@@ -1,12 +1,12 @@
 package gov.nasa.robotexplorer.domain;
 
-import gov.nasa.robotexplorer.properties.InitialRobotProperties;
+import gov.nasa.robotexplorer.properties.InitialProperties;
 
 public enum  BoundaryMap {
-    SOUTH_LIMIT(InitialRobotProperties.SOUTH_LIMIT , Axis.AXIS_Y),
-    NORTH_LIMIT(InitialRobotProperties.NORTH_LIMIT, Axis.AXIS_Y),
-    WEST_LIMIT(InitialRobotProperties.WEST_LIMIT, Axis.AXIS_X),
-    EAST_LIMIT(InitialRobotProperties.EAST_LIMIT, Axis.AXIS_X);
+    SOUTH_LIMIT(InitialProperties.SOUTH_LIMIT , Axis.AXIS_Y),
+    NORTH_LIMIT(InitialProperties.NORTH_LIMIT, Axis.AXIS_Y),
+    WEST_LIMIT(InitialProperties.WEST_LIMIT, Axis.AXIS_X),
+    EAST_LIMIT(InitialProperties.EAST_LIMIT, Axis.AXIS_X);
 
     private Integer limiteCoordinate;
     private Axis axis;
@@ -20,7 +20,4 @@ public enum  BoundaryMap {
         return limiteCoordinate;
     }
 
-    public Axis getAxis() {
-        return axis;
-    }
 }

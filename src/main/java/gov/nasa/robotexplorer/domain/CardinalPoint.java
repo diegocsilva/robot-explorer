@@ -1,7 +1,5 @@
 package gov.nasa.robotexplorer.domain;
 
-import gov.nasa.robotexplorer.exception.CardinalPointsDoesNotValidException;
-
 public enum CardinalPoint {
     NORTH("N", 1, 1, Axis.AXIS_Y),
     WEST("W", 2, -1, Axis.AXIS_X),
@@ -21,12 +19,6 @@ public enum CardinalPoint {
         this.axisWhereMove = axisWhereMove;
     }
 
-    CardinalPoint(String value) {
-        CardinalPoint cardinalPoint = getByValue(value);
-        this.value = cardinalPoint.value;
-        this.order = cardinalPoint.order;
-    }
-
     public static CardinalPoint getByOrder(Integer order) {
         switch (order) {
             case 1:
@@ -39,21 +31,6 @@ public enum CardinalPoint {
                 return EAST;
             default:
                 return null;
-        }
-    }
-
-    public static CardinalPoint getByValue(String value) throws CardinalPointsDoesNotValidException {
-        switch (value) {
-            case "N" :
-                return NORTH;
-            case "S" :
-                return SOUTH;
-            case "W" :
-                return WEST;
-            case "E" :
-                return EAST;
-            default:
-                throw new CardinalPointsDoesNotValidException();
         }
     }
 

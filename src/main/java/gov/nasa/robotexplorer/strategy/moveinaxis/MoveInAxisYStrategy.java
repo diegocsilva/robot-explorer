@@ -5,9 +5,8 @@ import gov.nasa.robotexplorer.model.Position;
 public class MoveInAxisYStrategy implements MoveInAxisStrategy{
     @Override
     public Position move(Position position) {
-        position.setCoordinateY(
-                position.getCoordinateY() + position.getDirection().getValueDeslocationInAxis()
-        );
+        Integer coordinate = position.getCoordinateY() + position.getDirection().getValueDeslocationInAxis();
+        position.setCoordinateY(coordinate);
         return position;
     }
 }

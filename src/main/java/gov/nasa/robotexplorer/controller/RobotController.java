@@ -16,8 +16,8 @@ public class RobotController {
     @Autowired
     private RobotService service;
 
-    @RequestMapping(value="/executeTheRoute/{route}", method= RequestMethod.POST)
-    public ResponseEntity<?> executeTheRoute(@PathVariable String route){
+    @RequestMapping(value="/executeRoute/{route}", method= RequestMethod.POST)
+    public ResponseEntity<?> executeRoute(@PathVariable String route){
         Robot robot = service.executeTheRoute(route);
         return ResponseEntity.ok(robot.getPosition().toString());
     }
