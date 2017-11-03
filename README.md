@@ -28,11 +28,11 @@ Ou seja, um passo para o NORTE da posição (x,y), é a posição (x, y+1)
     
 ## `Observações:`
 
-O terreno deverá ser iniciado com 5x5 posições;
-O robô inicia na coordenada (0,0,N);
-Deverá ser possível enviar um comando para o Robô que me retorne a posição final dele;
-O Robô não pode se movimentar para fora da área especificada;
-Não deve guardar estado do robô para consulta posterior;
+ - O terreno deverá ser iniciado com 5x5 posições;
+ - O robô inicia na coordenada (0,0,N);
+ - Deverá ser possível enviar um comando para o Robô que me retorne a posição final dele;
+ - O Robô não pode se movimentar para fora da área especificada;
+ - Não deve guardar estado do robô para consulta posterior;
 
 ## `Descrições técnicas`
 
