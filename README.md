@@ -64,8 +64,8 @@ Executando o Jar
 Como se trata de um projeto Spring Boot, podemos simplismente executar o jar que foi gerado na pasta target e a 
 aplicação irá subir em um tomcat embedded.
 
-    #!/market-web-view/target
-    $ java -jar mars-robot-0.0.1-SNAPSHOT.jar
+    #!/robot-explorer/target
+    $ java -jar robot-explorer-0.0.1-SNAPSHOT.jar.original
 
 Pronto, a aplicação deve estar online na porta 8080.
 
