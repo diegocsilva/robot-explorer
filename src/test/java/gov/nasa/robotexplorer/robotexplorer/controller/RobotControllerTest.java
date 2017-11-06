@@ -3,10 +3,13 @@ package gov.nasa.robotexplorer.robotexplorer.controller;
 import gov.nasa.robotexplorer.RobotExplorerApplication;
 import gov.nasa.robotexplorer.controller.RobotController;
 import gov.nasa.robotexplorer.handler.RestExceptionHandler;
-import gov.nasa.robotexplorer.properties.InitialProperties;
+import gov.nasa.robotexplorer.properties.MessagesProperties;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.core.env.Environment;
@@ -37,11 +40,21 @@ public class RobotControllerTest {
     @Autowired
     private Environment env;
 
+    @Autowired
+    private MessagesProperties messagesProperties;
+
+    @Mock
+    private Logger logger;
+
+    @InjectMocks
+    private RestExceptionHandler restExceptionHandler;
+
     private Map<String, String> messagesError = new HashMap<>();
 
     @Before
     public void setUp() {
-        this.mockMvc = MockMvcBuilders.standaloneSetup(robotController).setControllerAdvice(new RestExceptionHandler()).build();
+        this.mockMvc = MockMvcBuilders.standaloneSetup(robotController)
+                .setControllerAdvice(restExceptionHandler).build();
         messagesError.put("position_not_valid", env.getProperty("robot.exception.message.position_not_valid"));
         messagesError.put("action_not_valid", env.getProperty("robot.exception.message.action_not_valid"));
         messagesError.put("defaul_error_message", env.getProperty("robot.exception.message.defaul_error_message"));
@@ -93,34 +106,34 @@ public class RobotControllerTest {
     public void whenMoveWest1x_ThenReturnStatusBadRequestAndMessageErrorPosition() throws Exception {
         mockMvc.perform(post("/robot/executeRoute/LM"))
                 .andExpect(status().isBadRequest())
-                .andExpect(content().string(InitialProperties.messagePositionNotValid));
+                .andExpect(content().string(messagesProperties.getMessage("error.position_not_valid")));
     }
 
     @Test
     public void whenMoveNorth6x_ThenReturnStatusBadRequestAndMessageErrorPosition() throws Exception {
         mockMvc.perform(post("/robot/executeRoute/MMMMMM"))
                 .andExpect(status().isBadRequest())
-                .andExpect(content().string(InitialProperties.messagePositionNotValid));
+                .andExpect(content().string(messagesProperties.getMessage("error.position_not_valid")));
     }
 
     @Test
     public void whenMoveEast6x_ThenReturnStatusBadRequestAndMessageErrorPosition() throws Exception {
         mockMvc.perform(post("/robot/executeRoute/RMMMMMM"))
                 .andExpect(status().isBadRequest())
-                .andExpect(content().string(InitialProperties.messagePositionNotValid));
+                .andExpect(content().string(messagesProperties.getMessage("error.position_not_valid")));
     }
 
     @Test
     public void whenMoveSouth1x_ThenReturnStatusBadRequestAndMessageErrorPosition() throws Exception {
         mockMvc.perform(post("/robot/executeRoute/LLM"))
                 .andExpect(status().isBadRequest())
-                .andExpect(content().string(InitialProperties.messagePositionNotValid));
+                .andExpect(content().string(messagesProperties.getMessage("error.position_not_valid")));
     }
 
     @Test
     public void whenCommandNotValid_ThenReturnStatusBadRequestAndMessageErrorCommand() throws Exception {
         mockMvc.perform(post("/robot/executeRoute/PP"))
                 .andExpect(status().isBadRequest())
-                .andExpect(content().string(InitialProperties.messageActionNotValid));
+                .andExpect(content().string(messagesProperties.getMessage("error.action_not_valid")));
     }
 }

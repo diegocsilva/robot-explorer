@@ -13,15 +13,17 @@ import java.util.List;
 public class RobotService {
 
     private RobotFactory robotFactory;
+
     private ActionParse actionParse;
+
     private PositionService positionService;
 
     public Robot executeTheRoute(String route) {
         List<ActionStrategy> actions = actionParse.parse(route);
         Robot robot = robotFactory.create();
 
-        actions.forEach(action ->
-                robot.setPosition(action.execute(robot.getPosition())));
+        actions.stream().forEach(action ->
+                action.execute(robot.getPosition()));
 
         positionService.validPosition(robot.getPosition());
 

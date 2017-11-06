@@ -1,6 +1,7 @@
 package gov.nasa.robotexplorer.factory;
 
 import gov.nasa.robotexplorer.exception.ActionDoesNotValidException;
+import gov.nasa.robotexplorer.helper.MessageSourceHelper;
 import gov.nasa.robotexplorer.strategy.action.ActionStrategy;
 import gov.nasa.robotexplorer.strategy.action.MoveOnActionStrategy;
 import gov.nasa.robotexplorer.strategy.action.TurnLeftActionStrategy;
@@ -34,12 +35,13 @@ public enum ActionStrategyFactory {
         this.code = code;
     }
 
-    public static ActionStrategyFactory getByCode(Character code){
+    public static ActionStrategyFactory getByCode(char code){
         switch (code) {
             case 'R':  return TO_TURN_RIGHT;
             case 'L':  return TO_TURN_LEFT;
             case 'M':  return MOVE_ON;
-            default: throw new ActionDoesNotValidException();
+            default:
+                throw new ActionDoesNotValidException(MessageSourceHelper.getMessage("error.action_not_valid"));
         }
     }
 

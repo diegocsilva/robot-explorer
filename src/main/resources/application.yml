@@ -1,4 +1,7 @@
 ---
+server:
+  port: 8080
+
 robot:
   initial:
     COORDINATE_X: 0
@@ -8,8 +11,10 @@ robot:
     AXIS_RANGE_Y: 5
     SOUTH_LIMIT: 0
     WEST_LIMIT: 0
-  exception:
-    message:
-      action_not_valid: Ocorreu um erro ao tentar converter comando enviado em uma ação, por favor verifique novamente!
-      position_not_valid: Comando não suportado pois ele leva a uma posição não localizada dentro do mapa.
-      defaul_error_message: Erro ao executar rota.
+spring:
+  messages:
+    basename: i18n/messages
+    cache-seconds: -1
+    encoding: UTF-8
+  mvc:
+    locale: pt_BR

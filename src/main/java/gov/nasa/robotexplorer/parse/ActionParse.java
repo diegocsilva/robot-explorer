@@ -19,7 +19,7 @@ public class ActionParse {
         return actions;
     }
 
-    private ActionStrategy parse(Character command) {
+    private ActionStrategy parse(char command) {
         return ActionStrategyFactory.getByCode(command).getAction();
     }
 

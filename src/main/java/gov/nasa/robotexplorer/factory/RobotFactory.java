@@ -7,14 +7,10 @@ import org.springframework.stereotype.Component;
 @Component
 public class RobotFactory {
 
+    @Autowired
     private PositionFactory positionFactory;
 
     public Robot create(){
         return new Robot(positionFactory.create());
-    }
-
-    @Autowired
-    public void setPositionFactory(PositionFactory positionFactory) {
-        this.positionFactory = positionFactory;
     }
 }
